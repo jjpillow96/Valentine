@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Valentine?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: pink;
+      font-family: Arial, sans-serif;
+    }
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+    }
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+      margin: 10px;
+    }
+    #yes { background: #ff4d6d; color: white; }
+    #no { background: gray; position: absolute; }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <h2>Will you be my Valentine? 💖</h2>
+    <button id="yes" onclick="alert('Yay! 💕')">Yes</button>
+    <button id="no">No</button>
+  </div>
+
+  <script>
+    const no = document.getElementById("no");
+    no.addEventListener("touchstart", move);
+
+    function move() {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      no.style.left = x + "px";
+      no.style.top = y + "px";
+    }
+  </script>
+</body>
+</html>
