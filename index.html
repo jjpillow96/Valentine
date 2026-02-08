@@ -15,9 +15,7 @@
       --dark: #2b2b2b;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -38,7 +36,7 @@
       100% { background-position: 100% 50%; }
     }
 
-    /* Soft glow particles */
+    /* Sparkles */
     .sparkle {
       position: fixed;
       width: 6px;
@@ -54,6 +52,7 @@
       to { transform: translateY(-10vh) scale(1); opacity: 1; }
     }
 
+    /* Card */
     .card {
       background: rgba(255,255,255,0.92);
       backdrop-filter: blur(10px);
@@ -83,7 +82,7 @@
       font-family: "Playfair Display", serif;
       font-size: 30px;
       color: var(--rose);
-      margin: 0 0 12px;
+      margin: 12px 0 15px;
       letter-spacing: 0.5px;
     }
 
@@ -93,10 +92,20 @@
       margin: 0 0 35px;
     }
 
-    .buttons {
-      position: relative;
-      height: 130px;
+    /* Photo at top */
+    .photo {
+      width: 100%;
+      height: 220px;
+      border-radius: 18px;
+      margin-bottom: 25px;
+      background-image: url("IMG_6170");
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
     }
+
+    /* Buttons */
+    .buttons { position: relative; height: 130px; }
 
     button {
       padding: 14px 34px;
@@ -109,6 +118,8 @@
       transition: all 0.2s ease;
     }
 
+    button:active { transform: scale(0.95); }
+
     #yes {
       background: linear-gradient(135deg, #ff4d6d, #ff758f);
       color: white;
@@ -117,9 +128,7 @@
       box-shadow: 0 12px 30px rgba(255,77,109,0.45);
     }
 
-    #yes:hover {
-      transform: translateX(-120%) scale(1.05);
-    }
+    #yes:hover { transform: translateX(-120%) scale(1.05); }
 
     #no {
       background: rgba(180,180,180,0.85);
@@ -141,10 +150,7 @@
       animation: fadeIn 0.6s ease forwards;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
     .final h2 {
       font-family: "Playfair Display", serif;
@@ -153,16 +159,14 @@
       margin-bottom: 15px;
     }
 
-    .final p {
-      font-size: 18px;
-      color: #444;
-    }
+    .final p { font-size: 18px; color: #444; }
   </style>
 </head>
 
 <body>
 
   <div class="card">
+    <div class="photo"></div>
     <h1>Will you be my Valentine?</h1>
     <p>A little moment, just for us.</p>
 
@@ -182,18 +186,16 @@
   <script>
     // Move "No" button
     const noBtn = document.getElementById("no");
-
     function dodge() {
       const x = Math.random() * (window.innerWidth - 120);
       const y = Math.random() * (window.innerHeight - 60);
       noBtn.style.left = x + "px";
       noBtn.style.top = y + "px";
     }
-
     noBtn.addEventListener("mouseenter", dodge);
     noBtn.addEventListener("touchstart", dodge);
 
-    // Yes action
+    // Yes button
     function acceptLove() {
       document.getElementById("final").style.display = "flex";
     }
@@ -207,7 +209,6 @@
       document.body.appendChild(s);
       setTimeout(() => s.remove(), 12000);
     }
-
     setInterval(createSparkle, 400);
   </script>
 
